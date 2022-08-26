@@ -20,9 +20,9 @@ public class Phase implements Serializable {
     @Column
     private String duree;
     @Column
-    @JsonFormat(pattern = "yyyy-MM-dd", shape = JsonFormat.Shape.STRING)
+    @JsonFormat(pattern = "yyyy/MM/dd", shape = JsonFormat.Shape.STRING)
     private String date_debut_phase;
-    @JsonFormat(pattern = "yyyy-MM-dd", shape = JsonFormat.Shape.STRING)
+    @JsonFormat(pattern = "yyyy/MM/dd", shape = JsonFormat.Shape.STRING)
     @Column
     private String date_fin_phase;
     @Column
@@ -30,7 +30,7 @@ public class Phase implements Serializable {
 
     //Jointure
     @ManyToOne
-    @JoinColumn(name="id_projet", nullable=false)
+    @JoinColumn(name="id_projet")
     private Projet projet;
 
     public Phase() {

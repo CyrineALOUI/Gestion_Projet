@@ -2,32 +2,26 @@ package com.example.gestion_projet.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
 
 @Entity
-public class Competence implements Serializable {
+public class Tache implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_competence")
+    @Column(name = "id_tache")
     private Long id;
     @Column
     private String nom;
+    @Column
+    private String statut;
 
-    //Jointure
-    @ManyToMany(mappedBy = "competences")
-    private Set<Projet> projets;
-
-   /* @ManyToMany(mappedBy = "competencess")
-    private Set<Ressource> ressources;*/
-
-
-    public Competence() {
+    public Tache() {
     }
 
-    public Competence(Long id, String nom) {
-        id = id;
+    public Tache(Long id, String nom, String statut) {
+        this.id = id;
         this.nom = nom;
+        this.statut = statut;
     }
 
     public Long getId() {
@@ -35,7 +29,7 @@ public class Competence implements Serializable {
     }
 
     public void setId(Long id) {
-        id = id;
+        this.id = id;
     }
 
     public String getNom() {
@@ -46,11 +40,20 @@ public class Competence implements Serializable {
         this.nom = nom;
     }
 
+    public String getStatut() {
+        return statut;
+    }
+
+    public void setStatut(String statut) {
+        this.statut = statut;
+    }
+
     @Override
     public String toString() {
-        return "Competence{" +
+        return "Tache{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
+                ", statut='" + statut + '\'' +
                 '}';
     }
 }

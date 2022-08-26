@@ -2,8 +2,8 @@ package com.example.gestion_projet.controllers;
 
 import java.util.List;
 
-import com.example.gestion_projet.models.Phase;
-import com.example.gestion_projet.services.phaseService;
+import com.example.gestion_projet.models.Tache;
+import com.example.gestion_projet.services.tacheService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,38 +18,41 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-
 @CrossOrigin("*")
 @RestController
-@RequestMapping("api/phases")
-public class phaseController {
+@RequestMapping("api/taches")
+public class tacheController {
+
     @Autowired
-    phaseService phaseService;
+    private tacheService tacheService;
 
     @PostMapping
-    public Phase ajouterPhase(@RequestBody Phase ph) {return this.phaseService.ajouterPhase(ph); }
-
-    @GetMapping("")
-    public List<Phase> listePhases() {
-        return this.phaseService.listePhases();
+    public Tache ajouterTache(@RequestBody Tache t) {
+        return this.tacheService.ajouterTache(t);
     }
 
+    @GetMapping("")
+    public List<Tache> listeTaches() {
+        return this.tacheService.listeTaches();
+    }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Phase> modifierPhase(@PathVariable("id") Long id, @RequestBody Phase ph) {
-        phaseService.modifierPhase(id, ph);
-        return new ResponseEntity<>(phaseService.getById(id), HttpStatus.OK);
+    public ResponseEntity<Tache> modifierTache(@PathVariable("id") Long id, @RequestBody Tache t) {
+        tacheService.modifierTache(id, t);
+        return new ResponseEntity<>(tacheService.getById(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public void supprimerPhases(@PathVariable Long id) {
-        this.phaseService.supprimerPhase(id);
+    public void supprimerTache(@PathVariable Long id) {
+        this.tacheService.supprimerTache(id);
 
     }
 
     @GetMapping("/{id}")
-    public Phase getById(@PathVariable Long id) {
-        return this.phaseService.getById(id);
+    public Tache getById(@PathVariable Long id) {
+        return this.tacheService.getById(id);
     }
+
+
 
 }
