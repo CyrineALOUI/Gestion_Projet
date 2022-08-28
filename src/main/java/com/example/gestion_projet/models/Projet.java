@@ -2,11 +2,8 @@ package com.example.gestion_projet.models;
 
 import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
@@ -48,7 +45,7 @@ public class Projet implements Serializable {
     }
 
     public Projet(Long id, String nom, String entite, String description, String date_debut, String date_fin, float budget) {
-        id = id;
+        this.id = id;
         this.nom = nom;
         this.entite = entite;
         this.description = description;
@@ -59,11 +56,11 @@ public class Projet implements Serializable {
 
 
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Long id) {
-        id = id;
+        this.id = id;
     }
 
     public String getNom() {

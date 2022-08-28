@@ -56,7 +56,7 @@ public class Phase implements Serializable {
     }
 
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Long id) {
@@ -104,7 +104,7 @@ public class Phase implements Serializable {
     }
 
     public Projet getProjet() {
-        return projet;
+        return this.projet;
     }
 
     public void setProjet(Projet projet) {

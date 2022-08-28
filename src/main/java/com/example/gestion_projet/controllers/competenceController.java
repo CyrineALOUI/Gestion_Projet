@@ -1,8 +1,10 @@
 package com.example.gestion_projet.controllers;
 
 import java.util.List;
+import java.util.Set;
 
 import com.example.gestion_projet.models.Competence;
+import com.example.gestion_projet.repository.competenceRepository;
 import com.example.gestion_projet.services.competenceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,6 +27,9 @@ public class competenceController {
     @Autowired
     competenceService competenceService;
 
+    @Autowired
+    competenceRepository competenceRepository;
+
     @PostMapping
     public Competence ajouterCompetence(@RequestBody Competence c) {return this.competenceService.ajouterCompetence(c); }
 
@@ -45,9 +50,14 @@ public class competenceController {
 
     }
 
-    @GetMapping("/{id}")
+/*    @GetMapping("/{id}")
     public Competence getById(@PathVariable Long id) {
         return this.competenceService.getById(id);
+    }*/
+
+    @GetMapping("/{id}")
+    public Set<Competence> getByProjectId(@PathVariable Long id){
+        return competenceRepository.findCompetenceByProjetsId(id);
     }
 
 }
